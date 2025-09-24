@@ -1,0 +1,102 @@
+Project Overview:
+
+An application where apartment residents can report maintenance issues (like plumbing, electrical, etc.), and the apartment management team can view, assign, and update the status of these issues.
+
+Requirements:
+Functional Requirements:
+
+User Roles:
+
+Resident: Can log in, report issues, and view the status of their reported issues.
+
+Manager/Staff: Can log in, view all issues, assign staff to issues, update issue status, and close issues.
+
+Issue Reporting:
+
+Residents can report new issues with details like category, description, date, and urgency.
+
+Issue Tracking:
+
+Issues have statuses: New, Assigned, In Progress, Resolved, Closed.
+
+Staff can update status and add comments.
+
+User Management:
+
+Simple login system for Residents and Staff.
+
+Database:
+
+Store users, issues, comments, and issue status history.
+
+GUI:
+
+Java Swing forms for login, issue reporting, issue lists, and status updates.
+
+Suggested Classes & Their Responsibilities:
+1. User (abstract class)
+
+Attributes: userID, username, password, role (Resident or Staff)
+
+Methods: login(), logout()
+
+2. Resident (extends User)
+
+Methods: reportIssue(), viewIssues()
+
+3. Staff (extends User)
+
+Methods: viewAllIssues(), assignIssue(), updateIssueStatus()
+
+4. Issue
+
+Attributes: issueID, residentID, category, description, dateReported, urgency, status, assignedStaffID
+
+Methods: updateStatus(), addComment()
+
+5. Comment
+
+Attributes: commentID, issueID, staffID, commentText, commentDate
+
+Methods: None (just data holding)
+
+6. DatabaseManager
+
+Methods: connect(), disconnect(), executeQuery(), executeUpdate()
+
+Handles all SQL operations (insert, update, select)
+
+7. LoginFrame (Swing GUI)
+
+GUI for user login
+
+8. ResidentDashboardFrame (Swing GUI)
+
+GUI for residents to report and view issues
+
+9. StaffDashboardFrame (Swing GUI)
+
+GUI for staff to view, assign, and update issues
+
+10. IssueReportingFrame (Swing GUI)
+
+GUI form to report a new issue
+
+11. IssueDetailsFrame (Swing GUI)
+
+GUI to view and update issue details and add comments
+
+Database Tables (suggested schema):
+
+Users (userID, username, password, role)
+
+Issues (issueID, residentID, category, description, dateReported, urgency, status, assignedStaffID)
+
+Comments (commentID, issueID, staffID, commentText, commentDate)
+
+How to split work between 4 team members?
+Member	Responsibility
+1	Database Design + SQL queries + DatabaseManager class implementation
+2	User classes (User, Resident, Staff) + Login system
+3	Issue-related classes (Issue, Comment) + Business Logic
+4	GUI Design (Swing frames) and event handling
